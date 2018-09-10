@@ -7,14 +7,14 @@ count=1
 output=dict()
 def writetocsv(output=dict()):
     s=datetime.now().strftime('%y%m%d_%H%M%S')+".csv"
-    csvfilepath=os.path.join("/opt/lampp/htdocs",s)
+    csvfilepath=os.path.join("/var/www/html/",s)
     with open(csvfilepath, "wb") as csv_file:
         writer = csv.writer(csv_file, delimiter=',')
         head=["ITEM_NUMBER","UID","ITEM_NAME", "WEIGHT", "PRICE","DISCOUNT","GST_RATE","DATE","TIME"]
         writer.writerow(head)
         for key, value in output.items():
             writer.writerow([key, value[0],value[1],value[2],value[3],value[4],value[5],value[6],value[7]])
-    nfilepath=os.path.join("/opt/lampp/htdocs","myfile.txt")
+    nfilepath=os.path.join("/var/www/html/","myfile.txt")
     with open(nfilepath, 'w') as f:
         f.write(s)
         f.close()
